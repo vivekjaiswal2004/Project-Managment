@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Project Showcase</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <!-- <span class="logo">🧩</span> -->
+      <h1>Vyntra Projects</h1>
+    </div>
+
+    <div class="search-wrap">
+      <input id="searchInput" type="search" placeholder="Search projects..." />
+      <button id="clearSearch" aria-label="Clear search">&times;</button>
+    </div>
+
+    <div class="actions">
+      <button id="addBtn" class="btn primary">+ Add Project</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="toolbar">
+      <div class="chips" id="tagChips"></div>
+
+      <div class="sort-wrap">
+        <label for="sortSelect">Sort:</label>
+        <select id="sortSelect">
+          <option value="new">Newest first</option>
+          <option value="old">Oldest first</option>
+          <option value="az">Title A→Z</option>
+          <option value="za">Title Z→A</option>
+        </select>
+      </div>
+    </section>
+
+    <section id="grid" class="grid"></section>
+
+    <section id="empty" class="empty hidden">
+      <div class="empty-card">
+        <div class="emoji">🗂</div>
+        <h2>No projects found</h2>
+        <p>Try a different search or add a new project.</p>
+        <button class="btn" id="emptyAddBtn">Create your first project</button>
+      </div>
+    </section>
+  </main>
+
+  <dialog id="projectModal" class="modal">
+    <form id="projectForm" method="dialog" class="card">
+      <div class="card-head">
+        <h3 id="modalTitle">Add Project</h3>
+        <button type="button" class="icon-btn" id="closeModal" aria-label="Close">✖</button>
+      </div>
+
+      <div class="field">
+        <label>Title <span class="req">*</span></label>
+        <input type="text" id="title" required maxlength="100" placeholder="e.g. Portfolio Website" />
+      </div>
+
+      <div class="field">
+        <label>Description <span class="req">*</span></label>
+        <textarea id="description" required rows="4" placeholder="Briefly describe the project…"></textarea>
+      </div>
+
+      <div class="two-col">
+        <div class="field">
+          <label>Date</label>
+          <input type="date" id="date" />
+        </div>
+        <div class="field">
+          <label>Tags (comma separated)</label>
+          <input type="text" id="tags" placeholder="e.g. web, ui, js" />
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button type="button" class="btn" id="cancelBtn">Cancel</button>
+        <button type="submit" class="btn primary" id="saveBtn">Save Project</button>
+      </div>
+      <input type="hidden" id="editId" />
+    </form>
+  </dialog>
+
+  <div id="toast" class="toast"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
